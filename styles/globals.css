@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  @apply font-sans bg-white;
+}
+
+main {
+  @apply flex flex-col p-2 items-center justify-start px-[25%];
+}
+
+.head_text {
+  @apply text-4xl font-bold text-black;
+}
+
+.btn_primary {
+  @apply btn btn-primary bg-transparent border-black text-black capitalize rounded-full px-8 hover:bg-black hover:text-white hover:border-none;
+}
+
+.btn_primary_filled {
+  @apply btn btn-primary bg-black border-black text-white capitalize rounded-full px-8 hover:bg-white hover:text-black hover:border-black;
+}
+
+.secondary_text {
+  @apply text-2xl font-semibold text-black;
+}
