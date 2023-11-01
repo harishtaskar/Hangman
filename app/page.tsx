@@ -1,36 +1,13 @@
 import Puzzle from "@/components/Puzzle";
+import { getAllPuzzles } from "@/lib/getAllPuzzles";
 import "@/styles/globals.css";
 
-const Data = [
-  {
-    puzzledString: [
-      "J",
-      "undefined",
-      "v",
-      "undefined",
-      "undefined",
-      "c",
-      "undefined",
-      "undefined",
-      "p",
-      "t",
-    ],
-    actualString: "Javascript",
-    attempts: 3,
-    hint: "Programming Language",
-  },
-  {
-    puzzledString: ["S", "undefined", "n", "undefined", "undefined", "a", "m"],
-    actualString: "Singham",
-    attempts: 5,
-    hint: "Movie",
-  },
-];
-
-const Home = () => {
+const Home = async () => {
+  const puzzles: Promise<Puzzle[]> = await getAllPuzzles();
+  const data: Puzzle[] = await puzzles;
   return (
     <main>
-      {Data.map((item, index) => {
+      {data.map((item, index) => {
         return (
           <Puzzle
             key={index}

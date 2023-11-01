@@ -31,6 +31,7 @@ const InputText = ({
         placeholder={placeholder}
         className={`w-full border border-black rounded-lg px-3 py-2`}
         onChange={onChange}
+        required={true}
       />
     </div>
   );

@@ -3,13 +3,13 @@ import React from "react";
 
 const NavBar = () => {
   return (
-    <main className="bg-slate-50 py-4 drop-shadow-sm sticky">
+    <main className=" bg-slate-50 py-4 drop-shadow-sm sticy">
       <nav className="flex flex-row justify-between items-center w-full">
         <Link href={"/"} className="head_text">
           Hangman
         </Link>
         <Link href={"/create-puzzle"}>
-        <button className="btn_primary">Create</button>
+          <button className="btn_primary">Create</button>
         </Link>
       </nav>
     </main>
