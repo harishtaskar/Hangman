@@ -12,7 +12,6 @@ export const POST = async (req: Request) => {
       hint,
       puzzledString,
     });
-    console.log(newPuzzle);
     await newPuzzle.save();
     return new Response(JSON.stringify(newPuzzle), { status: 201 });
   } catch (error) {

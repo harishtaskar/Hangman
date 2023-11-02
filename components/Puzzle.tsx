@@ -13,7 +13,6 @@ const Puzzle = (puzzle: Props) => {
   const [correctWord, setCorrectWord] = useState<string>("");
   const [result, setResult] = useState<string>("");
   const [tempResult, setTempResult] = useState<string>("");
-  let inputValue: string[] = [];
   const onHandleChange = (index: number, input: string) => {
     if (puzzle.actualString[index] === input && puzzle.attempts > 0) {
       setTempResult("correct");
@@ -21,7 +20,6 @@ const Puzzle = (puzzle: Props) => {
         setTempResult("");
       }, 2000);
       puzzle?.puzzledString?.splice(index, 1, input);
-      console.log(inputValue);
       if (
         puzzle.actualString.toLowerCase() ===
         puzzle.puzzledString?.join("").toLowerCase()

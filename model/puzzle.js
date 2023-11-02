@@ -1,6 +1,8 @@
-import { Schema, model, models } from "mongoose";
+import mongoose from "mongoose";
 
-const puzzleSchema = new Schema({
+export const revalidate = 10;
+
+const puzzleSchema = new mongoose.Schema({
   puzzledString: {
     type: Object,
     required: true,
@@ -19,6 +21,4 @@ const puzzleSchema = new Schema({
   },
 });
 
-const Puzzle = models.Puzzle || model("Puzzle", puzzleSchema);
-
-export default Puzzle;
+export default mongoose.models.Puzzle || mongoose.model("Puzzle", puzzleSchema);
