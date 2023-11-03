@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "utils/mongodb.js",
+    "utils/mongodb.ts",
     "app/api/new/route.ts"
   ],
   "exclude": ["node_modules"]

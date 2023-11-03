@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 
-export const revalidate = 10;
-
 const puzzleSchema = new mongoose.Schema({
   puzzledString: {
     type: Object,

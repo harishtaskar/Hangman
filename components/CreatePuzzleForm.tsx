@@ -47,6 +47,7 @@ const CreatePuzzleForm = () => {
         }),
       });
       if (response.ok) {
+        router.refresh();
         router.push("/");
       }
     } catch (error: unknown) {

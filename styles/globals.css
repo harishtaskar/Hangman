@@ -15,7 +15,7 @@ main {
 }
 
 .btn_primary {
-  @apply btn btn-primary bg-transparent border-black text-sm sm:text-lg text-black capitalize sm:w-fit w-full rounded-md sm:rounded-full px-6 sm:px-8 hover:bg-black hover:text-white hover:border-none;
+  @apply btn btn-primary bg-transparent border-black text-sm sm:text-lg text-black capitalize sm:w-fit w-full rounded-[50%] sm:rounded-full px-6 sm:px-8 hover:bg-black hover:text-white hover:border-none;
 }
 
 .btn_primary_filled {
