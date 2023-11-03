@@ -1,31 +1,39 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { useRouter } from "next/navigation";
 
 type Props = {
   actualString: string;
   puzzledString: string[] | undefined[];
   attempts: number;
   hint: string;
+  id: string;
 };
 
 const Puzzle = (puzzle: Props) => {
+  const router = useRouter();
   const [visible, setVisible] = useState<boolean>(false);
   const [correctWord, setCorrectWord] = useState<string>("");
   const [result, setResult] = useState<string>("");
   const [tempResult, setTempResult] = useState<string>("");
+  const [typedstring, setTypedString] = useState<string[] | undefined[]>(
+    puzzle.puzzledString
+  );
   const onHandleChange = (index: number, input: string) => {
     if (puzzle.actualString[index] === input && puzzle.attempts > 0) {
+      typedstring.splice(index, 1, input);
+      console.log(typedstring);
       setTempResult("correct");
       setTimeout(() => {
         setTempResult("");
       }, 2000);
       puzzle?.puzzledString?.splice(index, 1, input);
       if (
-        puzzle.actualString.toLowerCase() ===
-        puzzle.puzzledString?.join("").toLowerCase()
+        puzzle.actualString.toLowerCase() === typedstring.join("").toLowerCase()
       ) {
         setResult("finished");
-        setCorrectWord(puzzle.actualString);
+        setCorrectWord(typedstring.join(""));
         setTimeout(() => {
           setVisible(false);
         }, 2000);
@@ -48,6 +56,26 @@ const Puzzle = (puzzle: Props) => {
       }
     }
   };
+
+  const deleteItemHandler = async (id: string) => {
+    await fetch("/api/puzzle/", {
+      method: "DELETE",
+      body: JSON.stringify({ id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    router.refresh();
+  };
+
+  useEffect(() => {
+    if (
+      puzzle.actualString.toLowerCase() === typedstring.join("").toLowerCase()
+    ) {
+      setResult("finished");
+      setCorrectWord(typedstring.join(""));
+    }
+  }, []);
 
   return (
     <div
@@ -110,15 +138,20 @@ const Puzzle = (puzzle: Props) => {
           </div>
         </div>
       ) : (
-        <span
-          className="secondary_text cursor-pointer "
-          onClick={() => setVisible((prev) => !prev)}
-        >
-          {puzzle.hint}{" "}
-          <span className="text-base sm:text-xl text-black underline">
-            {correctWord}
+        <div className="flex justify-between items-center w-full">
+          <span
+            className="secondary_text cursor-pointer w-full"
+            onClick={() => setVisible((prev) => !prev)}
+          >
+            {puzzle.hint}{" "}
+            <span className="text-base sm:text-xl text-black underline">
+              {correctWord}
+            </span>
           </span>
-        </span>
+          <button onClick={() => deleteItemHandler(puzzle.id)}>
+            <DeleteForeverIcon fontSize="large" />
+          </button>
+        </div>
       )}
     </div>
   );

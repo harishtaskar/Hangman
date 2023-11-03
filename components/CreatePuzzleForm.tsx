@@ -55,6 +55,11 @@ const CreatePuzzleForm = () => {
     }
   };
 
+  const resetHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    setFormData({ actualString: "", attempts: 0, hint: "" });
+  };
+
   return (
     <div className="flex flex-col justify-start w-full border m-2 border-gray-500 rounded-xl sm:rounded-lg sm:px-6 sm:py-4 px-4 py-5 mt-4 sm:mt-6">
       <span className="text-3xl text-black pb-4 font-bold">Create Puzzle</span>
@@ -88,7 +93,9 @@ const CreatePuzzleForm = () => {
           onChange={onChange}
         />
         <div className="flex flex-col-reverse sm:flex-row gap-2 w-full justify-end items-center mt-2">
-          <button className="btn_primary">Reset</button>
+          <button className="btn_primary" onClick={resetHandler}>
+            Reset
+          </button>
           <button type="submit" className="btn_primary_filled">
             Submit
           </button>

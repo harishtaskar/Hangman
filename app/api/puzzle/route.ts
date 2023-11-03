@@ -10,3 +10,14 @@ export const GET = async () => {
     return new Response("Failed to find posts", { status: 500 });
   }
 };
+
+export const DELETE = async (req: Request) => {
+  const { id } = await req.json();
+  try {
+    await connectToDB();
+    await Puzzle.findByIdAndDelete({ _id: id });
+    return new Response("Item Successfully Deleted", { status: 200 });
+  } catch (error) {
+    return new Response("Failed to find posts", { status: 500 });
+  }
+};
