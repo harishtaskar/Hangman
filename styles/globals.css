@@ -6,6 +6,15 @@
   @apply font-sans bg-white;
 }
 
+.main {
+  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+  content: "";
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+}
+
 main {
   @apply flex flex-col p-2 items-center justify-start sm:px-[25%] px-[5%];
 }

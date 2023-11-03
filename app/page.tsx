@@ -8,7 +8,7 @@ const Home = async () => {
   const data: PuzzleType[] = await puzzles;
 
   return (
-    <main>
+    <main className="main">
       {data.map((item, index) => {
         return (
           <Puzzle
